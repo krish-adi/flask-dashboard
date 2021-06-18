@@ -1,0 +1,38 @@
+<nav id="sidebar" class="background background-op">
+    <div id="dismiss">
+        <i class="fas fa-times"></i>
+    </div>
+
+    <div class="sidebar-header mx-4">
+        <img src="{{ url_for('static', filename='dash/piDash.png') }}" alt="neeres pi dashboard" height="45">
+    </div>
+
+    <div class="sidebar-header">
+        <p class="my-0 mx-1">{{ current_user.username }}</p>
+        <p class="my-0 mx-1">{{ current_user.email }}</p>
+    </div>
+
+    <ul class="list-unstyled components">
+
+        <li>
+            <a id="nav-dashboard" href="{{ url_for('dashboard') }}" class="sb-icons"> <i class="fas fa-th-large fasico"></i> DASHBOARD</a>
+        </li>
+        <li>
+            <a id="nav-analytics" href="{{ url_for('analytics') }}" class="sb-icons"> <i class="far fa-chart-bar fasico"></i> ANALYTICS</a>
+        </li>                
+        <li>
+            <a id="nav-account" href="{{ url_for('account') }}" class="sb-icons"> <i class="far fa-user fasico"></i> ACCOUNT</a>
+        </li>
+        <li>
+            <a id="nav-help" href="{{ url_for('help') }}" class="sb-icons"> <i class="far fa-question-circle fasico"></i> HELP</a>
+        </li>
+    </ul>
+
+    <ul class="list-unstyled sb-logout">
+
+        <li>
+            <a href="{{ url_for('account') }}" class="logout"> <i class="fas fa-sign-out-alt fasico"></i> LOGOUT</a>
+        </li>
+
+    </ul>    
+</nav>

@@ -1,0 +1,39 @@
+{% import 'jinjaMacros/macroCard.html' as cards %} {% extends
+"base-dashboard.html" %} {% block stylesheets %} {% endblock stylesheets %} {%
+block content %}
+
+<div class="row">
+  {% call cards.cardSmall(title='Change in Parameter 2', color='yg-bg') %}
+  <canvas id="polarCJS"></canvas>
+  {% endcall %} {% call cards.cardMedium(title='Monitoring Rainfall and
+  Temperature', color='pg-bg') %}
+  <canvas id="mixedCJS"></canvas>
+  {% endcall %}
+</div>
+
+<div class="row">
+  {% call cards.cardLarge(title='Monitoring Parameters', color='bg-bg') %}
+  <canvas id="lineCJS"></canvas>
+  {% endcall %}
+</div>
+
+{% endblock content %} {% block javascripts %}
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#nav-analytics").addClass("active");
+  });
+</script>
+
+<!-- Chart JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="{{ url_for('static', filename='dash/ChartJS/utils.js') }}"></script>
+
+<script type="text/javascript">  
+  var polarCJS = new Chart(document.getElementById('polarCJS').getContext('2d'), {{ config_polar|safe }});
+  var mixedCJS = new Chart(document.getElementById('mixedCJS').getContext('2d'), {{ config_mixed|safe }});
+  var lineCJS = new Chart(document.getElementById('lineCJS').getContext('2d'), {{ config_line|safe }});
+</script>
+
+{% endblock javascripts %}

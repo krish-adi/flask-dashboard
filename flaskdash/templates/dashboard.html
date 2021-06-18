@@ -1,0 +1,87 @@
+{% import 'jinjaMacros/macroCard.html' as cards %} {% extends
+"base-dashboard.html" %} {% block stylesheets %} {% endblock stylesheets %} {%
+block content %}
+
+<div class="row">
+  {% call cards.tileSmall('rg-bg') %}
+  <div class="card-body row">
+    <div class="col">
+      <h5 class="card-title">Temperature</h5>
+      <h6 class="card-subtitle mb-2">SYSTEM</h6>
+      <h4 class="card-text text-center">
+        <i class="fas fa-temperature-high"></i>
+      </h4>
+    </div>
+    <div class="col my-auto text-center">
+      <h1 class="">45</h1>
+    </div>
+  </div>
+  <div class="card-foot"><i class="fas fa-history"></i> Updated 2 min ago</div>
+  {% endcall %} {% call cards.tileSmall('gg-bg') %}
+  <div class="card-body row">
+    <div class="col">
+      <h5 class="card-title">Pressure</h5>
+      <h6 class="card-subtitle mb-2">SYSTEM</h6>
+      <h4 class="card-text text-center"><i class="fas fa-cloud"></i></h4>
+    </div>
+    <div class="col my-auto text-center">
+      <h1 class="">1.01</h1>
+    </div>
+  </div>
+  <div class="card-foot"><i class="fas fa-history"></i> Updated 2 min ago</div>
+  {% endcall %} {% call cards.tileSmall('pg-bg') %}
+  <div class="card-body row">
+    <div class="col">
+      <h5 class="card-title">COD</h5>
+      <h6 class="card-subtitle mb-2">SYSTEM</h6>
+      <h4 class="card-text text-center"><i class="fas fa-vial"></i></h4>
+    </div>
+    <div class="col my-auto text-center">
+      <h1 class="">235</h1>
+    </div>
+  </div>
+  <div class="card-foot"><i class="fas fa-history"></i> Updated 2 min ago</div>
+  {% endcall %} {% call cards.tileSmall('yg-bg') %}
+  <div class="card-body row">
+    <div class="col">
+      <h5 class="card-title">Turbidity</h5>
+      <h6 class="card-subtitle mb-2">SYSTEM</h6>
+      <h4 class="card-text text-center"><i class="fas fa-wind"></i></h4>
+    </div>
+    <div class="col my-auto text-center">
+      <h1 class="">5</h1>
+    </div>
+  </div>
+  <div class="card-foot"><i class="fas fa-history"></i> Updated 2 min ago</div>
+  {% endcall %}
+</div>
+
+<div class="row">
+  {% call cards.cardMedium(title='Displaying % Change in Dataset',
+  color='rg-bg') %}
+  <canvas id="barCJS"></canvas>
+  {% endcall %} {% call cards.cardSmall(title='Change in Parameter 1',
+  color='gg-bg') %}
+  <canvas id="doughnutCJS"></canvas>
+  {% endcall %}
+</div>
+
+{% endblock content %} {% block javascripts %}
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#nav-dashboard").addClass("active");
+  });
+</script>
+
+<!-- Chart JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="{{ url_for('static', filename='dash/ChartJS/utils.js') }}"></script>
+
+<script type="text/javascript">
+  var barCJS = new Chart(document.getElementById('barCJS').getContext('2d'), {{ config_bar|safe }});
+  var doughnutCJS = new Chart(document.getElementById('doughnutCJS').getContext('2d'), {{ config_doughnut|safe }});  
+</script>
+
+{% endblock javascripts %}

@@ -1,0 +1,40 @@
+{% macro tileSmall(class) %}
+    <div class="col-sm-6 col-xl-3">
+        <div class="card {{ class }}">
+            {{ caller() }}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro cardSmall(title='Title', color='bg-bg') %}
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+        <div class="card tiled-card">
+            <div class="card-head {{ color }}">{{ title }}</div>
+            <div class="card-chart">
+                {{ caller() }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro cardMedium(title='Title', color='bg-bg') %}
+    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+        <div class="card tiled-card">
+            <div class="card-head {{ color }}">{{ title }}</div>
+            <div class="card-chart">
+                {{ caller() }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro cardLarge(title='Title', color='bg-bg') %}
+    <div class="col-12">
+        <div class="card tiled-card">
+            <div class="card-head {{ color }}">{{ title }}</div>
+            <div class="card-chart">
+                {{ caller() }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
